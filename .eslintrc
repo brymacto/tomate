@@ -1,0 +1,43 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "rules": {
+    "comma-dangle": 0,
+    "func-names": 0,
+    "import/extensions": 2,
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": true,
+        "optionalDependencies": true,
+        "peerDependencies": false
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "linebreak-style": [ 2, "unix" ],
+    "max-len": 0,
+    "no-else-return": 2,
+    "no-underscore-dangle": 0,
+    "no-unused-vars": [2, {"args": "after-used", "argsIgnorePattern": "^_"}],
+    "no-use-before-define": [2, "nofunc"],
+    "quote-props": 0,
+    "quotes": [ 2, "double" ],
+    "radix": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-uses-react": 1,
+    "react/prefer-stateless-function": 0,
+    "react/require-extension": 0,
+    "semi": [ 2, "always" ]
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true,
+    "node": true
+  },
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "plugins": [ "react" ]
+}
