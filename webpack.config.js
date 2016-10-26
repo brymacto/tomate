@@ -1,13 +1,17 @@
+const path = require("path");
+
 module.exports = {
-  entry: './src/app.js',
+  entry: path.join(__dirname, "/src/", "app.js"),
   output: {
-    path: './bundled',
-    filename: 'app.bundle.js'
+    path: path.join(__dirname, "/bundled/"),
+    publicPath: "/assets/",
+    filename: "app.bundle.js"
   },
   module: {
     loaders: [{
+      test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      loader: "babel-loader"
     }]
   }
 };
