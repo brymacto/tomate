@@ -1,4 +1,5 @@
 import update from "immutability-helper";
+import { ActionTypes } from "../constants";
 
 const initialPomodoro = {
   goal: "",
@@ -13,7 +14,7 @@ const initialState = {
 
 export default function pomodoros(state = initialState, action) {
   switch (action.type) {
-    case "CURRENT_POMODORO/CHANGE_CURRENT_GOAL":
+    case ActionTypes.CHANGE_CURRENT_GOAL:
       return update(state, { currentPomodoro: { goal: { $set: action.payload.goal } } });
     default:
       return state;

@@ -1,4 +1,5 @@
 import { expect } from "chai";
+import { ActionTypes } from "../../src/constants";
 import pomodorosReducer from "../../src/reducers/pomodoros";
 
 describe("pomodoros reducer", () => {
@@ -10,7 +11,7 @@ describe("pomodoros reducer", () => {
         }
       };
       const action = {
-        type: "CURRENT_POMODORO/CHANGE_CURRENT_GOAL",
+        type: ActionTypes.CHANGE_CURRENT_GOAL,
         payload: {
           goal: 8
         }

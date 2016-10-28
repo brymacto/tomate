@@ -1,6 +1,8 @@
+import { ActionTypes } from "../constants";
+
 const actionCreators = {
   changeCurrentGoal: (goal) => ({
-    type: "CURRENT_POMODORO/CHANGE_CURRENT_GOAL",
+    type: ActionTypes.CHANGE_CURRENT_GOAL,
     payload: {
       goal
     }
