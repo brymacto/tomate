@@ -1,3 +1,14 @@
-export default function pomodoros(state = { "foo": "bar" }, _action) {
+const initialPomodoro = {
+  goal: null,
+  result: null,
+  startedAt: null,
+};
+
+const initialState = {
+  currentPomodoro: initialPomodoro,
+  pastPomodoros: [],
+};
+
+export default function pomodoros(state = initialState, _action) {
   return state;
 }

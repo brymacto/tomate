@@ -14,7 +14,7 @@ function init() {
 
   render((
     <Provider store={store}>
-      <PomodorosContainer></PomodorosContainer>
+      <PomodorosContainer />
     </Provider>
   ), document.getElementById("root"));
 }
