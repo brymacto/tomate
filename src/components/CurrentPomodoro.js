@@ -32,10 +32,11 @@ class OrderQuantityField extends Component {
               onChange={changeGoal}
             />
           </dd>
+          <dt>Result</dt>
+          <dd>{ currentPomodoro.result }</dd>
+          <dt>Started at</dt>
+          <dd>{ currentPomodoro.startedAt }</dd>
         </dl>
-        Goal: { currentPomodoro.goal }<br />
-        Result: { currentPomodoro.result }<br />
-        Started at: { currentPomodoro.startedAt }<br />
       </div>
     );
   }

@@ -1,3 +1,5 @@
+import update from "immutability-helper";
+
 const initialPomodoro = {
   goal: "",
   result: "",
@@ -9,6 +11,11 @@ const initialState = {
   pastPomodoros: [],
 };
 
-export default function pomodoros(state = initialState, _action) {
-  return state;
+export default function pomodoros(state = initialState, action) {
+  switch (action.type) {
+    case "CURRENT_POMODORO/CHANGE_CURRENT_GOAL":
+      return update(state, { currentPomodoro: { goal: { $set: action.payload.goal } } });
+    default:
+      return state;
+  }
 }

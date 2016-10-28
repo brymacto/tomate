@@ -1,8 +1,8 @@
 const actionCreators = {
   changeCurrentGoal: (goal) => ({
-    type: "CHANGE_CURRENT_GOAL",
+    type: "CURRENT_POMODORO/CHANGE_CURRENT_GOAL",
     payload: {
-      goal: goal
+      goal
     }
   })
 };
