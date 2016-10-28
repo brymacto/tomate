@@ -6,11 +6,12 @@ import pomodoros from "./reducers/pomodoros";
 import PomodorosContainer from "./containers/PomodorosContainer";
 
 
-let store = createStore(pomodoros);
 
 window.onload = init;
 
 function init() {
+  const store = createStore(pomodoros, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
   render((
     <Provider store={store}>
       <PomodorosContainer></PomodorosContainer>
