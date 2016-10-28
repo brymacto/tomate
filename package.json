@@ -19,6 +19,7 @@
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
+    "redux-devtools": "^3.3.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
@@ -26,11 +27,12 @@
     "babel-polyfill": "^6.16.0",
     "express": "^4.14.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0"
   },
   "babel": {
-    "plugins": [
-    ],
+    "plugins": ["transform-class-properties"],
     "presets": [
       "es2015",
       "react"
