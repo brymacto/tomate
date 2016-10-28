@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha-webpack --webpack-config webpack.config-test.js \"spec/**/*.js\""
   },
   "author": "",
   "license": "ISC",
@@ -14,14 +14,18 @@
     "babel-loader": "^6.2.6",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "chai": "^3.5.0",
     "eslint": "^3.8.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
+    "mocha": "^3.1.2",
+    "mocha-webpack": "^0.7.0",
     "redux-devtools": "^3.3.1",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "babel-polyfill": "^6.16.0",
@@ -32,7 +36,9 @@
     "redux": "^3.6.0"
   },
   "babel": {
-    "plugins": ["transform-class-properties"],
+    "plugins": [
+      "transform-class-properties"
+    ],
     "presets": [
       "es2015",
       "react"
