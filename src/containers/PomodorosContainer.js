@@ -13,18 +13,20 @@ class PomodorosContainer extends Component {
   static propTypes = {
     currentPomodoro: PropTypes.shape(pomodoroPropTypes).isRequired,
     pastPomodoros: PropTypes.arrayOf(PropTypes.shape(pomodoroPropTypes)).isRequired,
+    changeCurrentGoal: PropTypes.func.isRequired,
   };
 
   render() {
     const {
       currentPomodoro,
+      changeCurrentGoal,
       pastPomodoros
     } = this.props;
 
     return (
       <div>
         <h1>Tomate</h1>
-        <CurrentPomodoro currentPomodoro={currentPomodoro}/>
+        <CurrentPomodoro currentPomodoro={currentPomodoro} onChangeGoal={changeCurrentGoal} />
       </div>
     );
   }

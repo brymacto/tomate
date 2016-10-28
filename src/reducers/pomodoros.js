@@ -1,6 +1,6 @@
 const initialPomodoro = {
-  goal: null,
-  result: null,
+  goal: "",
+  result: "",
   startedAt: null,
 };
 
