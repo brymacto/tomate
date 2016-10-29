@@ -9,5 +9,6 @@ module.exports = {
       exclude: /node_modules/,
       loader: "babel-loader"
     }]
-  }
+  },
+  devtool: "cheap-module-source-map" // faster than 'source-map'
 };

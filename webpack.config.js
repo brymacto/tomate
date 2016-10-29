@@ -13,5 +13,6 @@ module.exports = {
       exclude: /node_modules/,
       loader: "babel-loader"
     }]
-  }
+  },
+  devtool: "eval-source-map"
 };
