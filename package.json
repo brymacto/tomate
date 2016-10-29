@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "test": "mocha-webpack --webpack-config webpack.config-test.js --require source-map-support/register --require babel-core/register \"spec/**/*.js\""
+    "test": "mocha-webpack --opts ./spec/mocha-webpack.opts"
   },
   "author": "",
   "license": "ISC",
