@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { ActionTypes } from "../../src/constants";
-import pomodorosReducer from "../../src/reducers/pomodoros";
+import { pomodorosReducer } from "../../src/reducers";
 
 describe("pomodoros reducer", () => {
   describe("managing the current pomodoro", () => {

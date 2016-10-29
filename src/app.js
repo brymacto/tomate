@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import pomodorosReducer from "./reducers/pomodoros";
+import { pomodorosReducer } from "./reducers";
 import PomodorosContainer from "./containers/PomodorosContainer";
 
 

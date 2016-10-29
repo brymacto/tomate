@@ -1,4 +1,5 @@
 import update from "immutability-helper";
+import { combineReducers } from "redux";
 import { ActionTypes } from "../constants";
 
 const initialPomodoro = {
@@ -12,7 +13,7 @@ const initialState = {
   pastPomodoros: [],
 };
 
-export default function pomodoros(state = initialState, action) {
+export function pomodorosReducer(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.CHANGE_CURRENT_GOAL:
       return update(state, { currentPomodoro: { goal: { $set: action.payload.goal } } });
@@ -20,3 +21,8 @@ export default function pomodoros(state = initialState, action) {
       return state;
   }
 }
+
+export default combineReducers({
+  pomodorosReducer
+});
+
