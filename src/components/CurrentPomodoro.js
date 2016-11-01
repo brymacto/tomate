@@ -11,13 +11,15 @@ class OrderQuantityField extends Component {
     currentPomodoro: PropTypes.shape(pomodoroPropTypes).isRequired,
     onChangeGoal: PropTypes.func.isRequired,
     onChangeResult: PropTypes.func.isRequired,
+    onStart: PropTypes.func.isRequired,
   };
 
   render() {
     const {
       currentPomodoro,
       onChangeGoal,
-      onChangeResult
+      onChangeResult,
+      onStart,
     } = this.props;
 
     function changeGoal(event) {
@@ -26,6 +28,11 @@ class OrderQuantityField extends Component {
 
     function changeResult(event) {
       onChangeResult(event.target.value);
+    }
+
+    function start() {
+      const dateTime = new Date();
+      onStart(dateTime);
     }
 
     return (
@@ -48,6 +55,8 @@ class OrderQuantityField extends Component {
           <dt>Started at</dt>
           <dd>{ currentPomodoro.startedAt }</dd>
         </dl>
+
+        <button onClick={start}>Start</button>
       </div>
     );
   }

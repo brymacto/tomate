@@ -12,6 +12,12 @@ const actionCreators = {
     payload: {
       result
     }
+  }),
+  startPomodoro: (dateTime) => ({
+    type: ActionTypes.START_POMODORO,
+    payload: {
+      dateTime
+    }
   })
 };
 

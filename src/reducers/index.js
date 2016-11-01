@@ -14,11 +14,17 @@ const initialState = {
 };
 
 export function pomodorosReducer(state = initialState, action) {
+  console.log(action)
+  if (action.payload && action.payload.dateTime) {
+    console.log(action.payload.dateTime)
+  }
   switch (action.type) {
     case ActionTypes.CHANGE_CURRENT_GOAL:
       return update(state, { currentPomodoro: { goal: { $set: action.payload.goal } } });
     case ActionTypes.CHANGE_CURRENT_RESULT:
       return update(state, { currentPomodoro: { result: { $set: action.payload.result } } });
+    case ActionTypes.START_POMODORO:
+      return update(state, { currentPomodoro: { startedAt: { $set: action.payload.dateTime } } });
     default:
       return state;
   }

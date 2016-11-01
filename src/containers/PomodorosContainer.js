@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import actions from "../actions";
 import CurrentPomodoro from "../components/CurrentPomodoro";
+import deserializePomodoro from "../deserializers/pomodoroDeserializer";
 
 const pomodoroPropTypes = {
   goal: PropTypes.string,
@@ -15,6 +16,7 @@ class PomodorosContainer extends Component {
     pastPomodoros: PropTypes.arrayOf(PropTypes.shape(pomodoroPropTypes)).isRequired,
     changeCurrentGoal: PropTypes.func.isRequired,
     changeCurrentResult: PropTypes.func.isRequired,
+    startPomodoro: PropTypes.func.isRequired,
   };
 
   render() {
@@ -22,13 +24,19 @@ class PomodorosContainer extends Component {
       currentPomodoro,
       changeCurrentGoal,
       changeCurrentResult,
+      startPomodoro,
       pastPomodoros
     } = this.props;
 
     return (
       <div>
         <h1>Tomate</h1>
-        <CurrentPomodoro currentPomodoro={currentPomodoro} onChangeGoal={changeCurrentGoal} onChangeResult={changeCurrentResult} />
+        <CurrentPomodoro
+          currentPomodoro={currentPomodoro}
+          onChangeGoal={changeCurrentGoal}
+          onChangeResult={changeCurrentResult}
+          onStart={startPomodoro}
+        />
       </div>
     );
   }
@@ -36,7 +44,7 @@ class PomodorosContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentPomodoro: state.currentPomodoro,
+    currentPomodoro: deserializePomodoro(state.currentPomodoro),
     pastPomodoros: state.pastPomodoros,
   };
 }
