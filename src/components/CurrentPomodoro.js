@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from "react";
+import Countdown from "./Countdown";
 
 const pomodoroPropTypes = {
   goal: PropTypes.string,
@@ -13,26 +14,6 @@ class OrderQuantityField extends Component {
     onChangeResult: PropTypes.func.isRequired,
     onStart: PropTypes.func.isRequired,
   };
-
-  componentDidMount() {
-    setInterval(updateDisplayTime.bind(this), 1000);
-
-    function updateDisplayTime() {
-      this.timer.innerHTML = this.displayTime();
-    }
-  }
-
-  displayTime() {
-    if (this.props.currentPomodoro.startedAt) {
-      const secondsRemaining = 1500 - ((new Date() - this.props.currentPomodoro.startedAt) / 1000);
-
-      const minutes = parseInt((secondsRemaining / 60));
-      const seconds = parseInt(secondsRemaining - (minutes * 60));
-      return `${minutes}:${seconds}`;
-    }
-    return "25:00";
-  }
-
 
   render() {
     const {
@@ -87,7 +68,7 @@ class OrderQuantityField extends Component {
           <dd>{ startedAt() }</dd>
         </dl>
 
-        <div ref={(div) => { this.timer = div; }} />
+        <Countdown startedAt={currentPomodoro.startedAt} />
 
         <button onClick={start}>Start</button>
       </div>
