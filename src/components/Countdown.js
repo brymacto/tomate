@@ -7,11 +7,15 @@ class Countdown extends Component {
 
 
   componentDidMount() {
-    setInterval(updateDisplayTime.bind(this), 1000);
+    this.interval = setInterval(updateDisplayTime.bind(this), 1000);
 
     function updateDisplayTime() {
       this.timer.innerHTML = this.displayTime();
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   displayTime() {
