@@ -6,7 +6,7 @@ import CurrentPomodoro from "../components/CurrentPomodoro";
 const pomodoroPropTypes = {
   goal: PropTypes.string,
   result: PropTypes.string,
-  startedAt: PropTypes.string,
+  startedAt: PropTypes.date,
 };
 
 class PomodorosContainer extends Component {
@@ -15,6 +15,7 @@ class PomodorosContainer extends Component {
     pastPomodoros: PropTypes.arrayOf(PropTypes.shape(pomodoroPropTypes)).isRequired,
     changeCurrentGoal: PropTypes.func.isRequired,
     changeCurrentResult: PropTypes.func.isRequired,
+    startPomodoro: PropTypes.func.isRequired,
   };
 
   render() {
@@ -22,13 +23,19 @@ class PomodorosContainer extends Component {
       currentPomodoro,
       changeCurrentGoal,
       changeCurrentResult,
+      startPomodoro,
       pastPomodoros
     } = this.props;
 
     return (
       <div>
         <h1>Tomate</h1>
-        <CurrentPomodoro currentPomodoro={currentPomodoro} onChangeGoal={changeCurrentGoal} onChangeResult={changeCurrentResult} />
+        <CurrentPomodoro
+          currentPomodoro={currentPomodoro}
+          onChangeGoal={changeCurrentGoal}
+          onChangeResult={changeCurrentResult}
+          onStart={startPomodoro}
+        />
       </div>
     );
   }
