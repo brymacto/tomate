@@ -20,9 +20,16 @@ class Countdown extends Component {
 
       const minutes = parseInt((secondsRemaining / 60));
       const seconds = parseInt(secondsRemaining - (minutes * 60));
-      return `${minutes}:${seconds}`;
+      return `${appendZero(minutes)}:${appendZero(seconds)}`;
     }
     return "25:00";
+
+    function appendZero(int) {
+      if (int < 10) {
+        return `0${int}`;
+      }
+      return int.toString();
+    }
   }
 
 
