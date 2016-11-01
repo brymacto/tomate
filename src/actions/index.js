@@ -6,6 +6,12 @@ const actionCreators = {
     payload: {
       goal
     }
+  }),
+  changeCurrentResult: (result) => ({
+    type: ActionTypes.CHANGE_CURRENT_RESULT,
+    payload: {
+      result
+    }
   })
 };
 

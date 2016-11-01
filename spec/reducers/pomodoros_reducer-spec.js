@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { ActionTypes } from "../../src/constants";
-import { pomodorosReducer } from "../../src/reducers";
+import { pomodorosReducer } from "../../src/reducers/";
 
 describe("pomodoros reducer", () => {
   describe("managing the current pomodoro", () => {
@@ -20,6 +20,24 @@ describe("pomodoros reducer", () => {
       const nextState = pomodorosReducer(prevState, action);
 
       expect(nextState.currentPomodoro.goal).to.equal(8);
+    });
+
+    it("updates the pomodoro result", () => {
+      const prevState = {
+        currentPomodoro: {
+          result: ""
+        }
+      };
+      const action = {
+        type: ActionTypes.CHANGE_CURRENT_RESULT,
+        payload: {
+          result: "my result"
+        }
+      };
+
+      const nextState = pomodorosReducer(prevState, action);
+
+      expect(nextState.currentPomodoro.result).to.equal("my result");
     });
   });
 });
