@@ -87,9 +87,9 @@ class OrderQuantityField extends Component {
 
         <Countdown startedAt={currentPomodoro.startedAt} currentlyPaused={currentPomodoro.currentlyPaused} secondsPaused={currentPomodoro.secondsPaused} />
 
-        <button onClick={start}>Start</button>
-        <button onClick={pause}>Pause</button>
-        <button onClick={restart}>Restart</button>
+        <button onClick={start} disabled={currentPomodoro.startedAt}>Start</button>
+        <button onClick={pause} disabled={!currentPomodoro.startedAt || currentPomodoro.currentlyPaused}>Pause</button>
+        <button onClick={restart} disabled={!currentPomodoro.startedAt || !currentPomodoro.currentlyPaused}>Restart</button>
       </div>
     );
   }
