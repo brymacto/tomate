@@ -24,7 +24,10 @@ export function pomodorosReducer(state = initialState, action) {
     case ActionTypes.START_POMODORO:
       return update(state, { currentPomodoro: { startedAt: { $set: action.payload.dateTime } } });
     case ActionTypes.PAUSE_POMODORO:
-      return update(state, { currentPomodoro: { pauses: { $push: [{ startedAt: action.payload.dateTime }] } } });
+      if (isNotPaused(state.currentPomodoro.pauses)) {
+        return update(state, { currentPomodoro: { pauses: { $push: [{ startedAt: action.payload.dateTime }] } } });
+      }
+      return state;
     case ActionTypes.RESTART_POMODORO:
       return update(state, { currentPomodoro: { pauses: { $apply: endCurrentPause } } });
     default:
@@ -35,6 +38,10 @@ export function pomodorosReducer(state = initialState, action) {
     const currentPauseIndex = findIndex(pauses, pause => (pause.startedAt && !pause.endedAt));
 
     return update(pauses, { [currentPauseIndex]: { $merge: { endedAt: action.payload.dateTime } } });
+  }
+
+  function isNotPaused(pauses) {
+    return !pauses.some(pause => (pause.startedAt && !pause.endedAt));
   }
 }
 

@@ -86,6 +86,29 @@ describe("pomodoros reducer", () => {
       );
     });
 
+    it("does not pause the pomodoro if it is already paused", () => {
+      const prevState = {
+        currentPomodoro: {
+          pauses: [{
+            startedAt: "a date",
+          }]
+        }
+      };
+
+      const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
+
+      const action = {
+        type: ActionTypes.PAUSE_POMODORO,
+        payload: {
+          dateTime: pauseStartDate
+        }
+      };
+
+      const nextState = pomodorosReducer(prevState, action);
+
+      expect(nextState).to.equal(prevState);
+    });
+
     it("restarts the pomodoro", () => {
       const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
       const prevState = {
