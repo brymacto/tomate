@@ -2,20 +2,17 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import actions from "../actions";
 import CurrentPomodoro from "../components/CurrentPomodoro";
-
-const pomodoroPropTypes = {
-  goal: PropTypes.string,
-  result: PropTypes.string,
-  startedAt: PropTypes.date,
-};
+import withPauseDetails from "../projectors/withPauseDetails";
 
 class PomodorosContainer extends Component {
   static propTypes = {
-    currentPomodoro: PropTypes.shape(pomodoroPropTypes).isRequired,
-    pastPomodoros: PropTypes.arrayOf(PropTypes.shape(pomodoroPropTypes)).isRequired,
+    currentPomodoro: PropTypes.object.isRequired,
+    pastPomodoros: PropTypes.array.isRequired,
     changeCurrentGoal: PropTypes.func.isRequired,
     changeCurrentResult: PropTypes.func.isRequired,
     startPomodoro: PropTypes.func.isRequired,
+    pausePomodoro: PropTypes.func.isRequired,
+    restartPomodoro: PropTypes.func.isRequired,
   };
 
   render() {
@@ -24,6 +21,8 @@ class PomodorosContainer extends Component {
       changeCurrentGoal,
       changeCurrentResult,
       startPomodoro,
+      pausePomodoro,
+      restartPomodoro,
       pastPomodoros
     } = this.props;
 
@@ -35,6 +34,8 @@ class PomodorosContainer extends Component {
           onChangeGoal={changeCurrentGoal}
           onChangeResult={changeCurrentResult}
           onStart={startPomodoro}
+          onPause={pausePomodoro}
+          onRestart={restartPomodoro}
         />
       </div>
     );
@@ -43,7 +44,7 @@ class PomodorosContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentPomodoro: state.currentPomodoro,
+    currentPomodoro: withPauseDetails(state.currentPomodoro, new Date()),
     pastPomodoros: state.pastPomodoros,
   };
 }

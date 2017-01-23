@@ -1,9 +1,13 @@
 import React, { Component, PropTypes } from "react";
+import Countdown from "./Countdown";
 
 const pomodoroPropTypes = {
   goal: PropTypes.string,
   result: PropTypes.string,
   startedAt: PropTypes.date,
+  pauses: PropTypes.array.isRequired,
+  secondsPaused: PropTypes.number.isRequired,
+  currentlyPaused: PropTypes.bool.isRequired,
 };
 
 class OrderQuantityField extends Component {
@@ -12,6 +16,8 @@ class OrderQuantityField extends Component {
     onChangeGoal: PropTypes.func.isRequired,
     onChangeResult: PropTypes.func.isRequired,
     onStart: PropTypes.func.isRequired,
+    onPause: PropTypes.func.isRequired,
+    onRestart: PropTypes.func.isRequired,
   };
 
   render() {
@@ -20,6 +26,8 @@ class OrderQuantityField extends Component {
       onChangeGoal,
       onChangeResult,
       onStart,
+      onPause,
+      onRestart,
     } = this.props;
 
     function changeGoal(event) {
@@ -33,6 +41,16 @@ class OrderQuantityField extends Component {
     function start() {
       const dateTime = new Date();
       onStart(dateTime);
+    }
+
+    function pause() {
+      const dateTime = new Date();
+      onPause(dateTime);
+    }
+
+    function restart() {
+      const dateTime = new Date();
+      onRestart(dateTime);
     }
 
     function startedAt() {
@@ -67,7 +85,11 @@ class OrderQuantityField extends Component {
           <dd>{ startedAt() }</dd>
         </dl>
 
+        <Countdown startedAt={currentPomodoro.startedAt} currentlyPaused={currentPomodoro.currentlyPaused} secondsPaused={currentPomodoro.secondsPaused} />
+
         <button onClick={start}>Start</button>
+        <button onClick={pause}>Pause</button>
+        <button onClick={restart}>Restart</button>
       </div>
     );
   }
