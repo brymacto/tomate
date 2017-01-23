@@ -7,6 +7,7 @@ const pomodoroPropTypes = {
   startedAt: PropTypes.date,
   pauses: PropTypes.array.isRequired,
   secondsPaused: PropTypes.number.isRequired,
+  currentlyPaused: PropTypes.bool.isRequired,
 };
 
 class OrderQuantityField extends Component {
@@ -84,7 +85,7 @@ class OrderQuantityField extends Component {
           <dd>{ startedAt() }</dd>
         </dl>
 
-        <Countdown startedAt={currentPomodoro.startedAt} />
+        <Countdown startedAt={currentPomodoro.startedAt} currentlyPaused={currentPomodoro.currentlyPaused} secondsPaused={currentPomodoro.secondsPaused} />
 
         <button onClick={start}>Start</button>
         <button onClick={pause}>Pause</button>
