@@ -18,6 +18,18 @@ const actionCreators = {
     payload: {
       dateTime
     }
+  }),
+  pausePomodoro: (dateTime) => ({
+    type: ActionTypes.PAUSE_POMODORO,
+    payload: {
+      dateTime
+    }
+  }),
+  restartPomodoro: (dateTime) => ({
+    type: ActionTypes.RESTART_POMODORO,
+    payload: {
+      dateTime
+    }
   })
 };
 

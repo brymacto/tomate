@@ -13,6 +13,8 @@ class OrderQuantityField extends Component {
     onChangeGoal: PropTypes.func.isRequired,
     onChangeResult: PropTypes.func.isRequired,
     onStart: PropTypes.func.isRequired,
+    onPause: PropTypes.func.isRequired,
+    onRestart: PropTypes.func.isRequired,
   };
 
   render() {
@@ -21,6 +23,8 @@ class OrderQuantityField extends Component {
       onChangeGoal,
       onChangeResult,
       onStart,
+      onPause,
+      onRestart,
     } = this.props;
 
     function changeGoal(event) {
@@ -34,6 +38,16 @@ class OrderQuantityField extends Component {
     function start() {
       const dateTime = new Date();
       onStart(dateTime);
+    }
+
+    function pause() {
+      const dateTime = new Date();
+      onPause(dateTime);
+    }
+
+    function restart() {
+      const dateTime = new Date();
+      onRestart(dateTime);
     }
 
     function startedAt() {
@@ -71,6 +85,8 @@ class OrderQuantityField extends Component {
         <Countdown startedAt={currentPomodoro.startedAt} />
 
         <button onClick={start}>Start</button>
+        <button onClick={pause}>Pause</button>
+        <button onClick={restart}>Restart</button>
       </div>
     );
   }
