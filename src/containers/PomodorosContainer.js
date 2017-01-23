@@ -2,17 +2,12 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import actions from "../actions";
 import CurrentPomodoro from "../components/CurrentPomodoro";
-
-const pomodoroPropTypes = {
-  goal: PropTypes.string,
-  result: PropTypes.string,
-  startedAt: PropTypes.date,
-};
+import withSecondsPaused from "../projectors/withSecondsPaused";
 
 class PomodorosContainer extends Component {
   static propTypes = {
-    currentPomodoro: PropTypes.shape(pomodoroPropTypes).isRequired,
-    pastPomodoros: PropTypes.arrayOf(PropTypes.shape(pomodoroPropTypes)).isRequired,
+    currentPomodoro: PropTypes.object.isRequired,
+    pastPomodoros: PropTypes.array.isRequired,
     changeCurrentGoal: PropTypes.func.isRequired,
     changeCurrentResult: PropTypes.func.isRequired,
     startPomodoro: PropTypes.func.isRequired,
@@ -49,7 +44,7 @@ class PomodorosContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentPomodoro: state.currentPomodoro,
+    currentPomodoro: withSecondsPaused(state.currentPomodoro, new Date()),
     pastPomodoros: state.pastPomodoros,
   };
 }

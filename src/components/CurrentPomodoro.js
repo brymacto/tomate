@@ -5,6 +5,8 @@ const pomodoroPropTypes = {
   goal: PropTypes.string,
   result: PropTypes.string,
   startedAt: PropTypes.date,
+  pauses: PropTypes.array.isRequired,
+  secondsPaused: PropTypes.number.isRequired,
 };
 
 class OrderQuantityField extends Component {
