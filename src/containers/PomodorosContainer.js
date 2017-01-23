@@ -40,6 +40,12 @@ class PomodorosContainer extends Component {
           onRestart={restartPomodoro}
           onFinish={finishPomodoro}
         />
+
+        {
+          pastPomodoros.map(pastPomodoro =>
+          <p key={pastPomodoro.startedAt}>Past Pomodoro</p>
+          )
+        }
       </div>
     );
   }
