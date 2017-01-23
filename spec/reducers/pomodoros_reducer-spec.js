@@ -61,54 +61,6 @@ describe("pomodoros reducer", () => {
       expect(nextState.currentPomodoro.startedAt).to.equal(date);
     });
 
-    it("pauses the pomodoro", () => {
-      const prevState = {
-        currentPomodoro: {
-          pauses: []
-        }
-      };
-
-      const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
-
-      const action = {
-        type: ActionTypes.PAUSE_POMODORO,
-        payload: {
-          dateTime: pauseStartDate
-        }
-      };
-
-      const nextState = pomodorosReducer(prevState, action);
-
-      expect(nextState.currentPomodoro.pauses).to.include(
-        {
-          startedAt: pauseStartDate,
-        }
-      );
-    });
-
-    it("does not pause the pomodoro if it is already paused", () => {
-      const prevState = {
-        currentPomodoro: {
-          pauses: [{
-            startedAt: "a date",
-          }]
-        }
-      };
-
-      const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
-
-      const action = {
-        type: ActionTypes.PAUSE_POMODORO,
-        payload: {
-          dateTime: pauseStartDate
-        }
-      };
-
-      const nextState = pomodorosReducer(prevState, action);
-
-      expect(nextState).to.equal(prevState);
-    });
-
     it("restarts the pomodoro", () => {
       const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
       const prevState = {
@@ -143,6 +95,92 @@ describe("pomodoros reducer", () => {
         }
       );
     });
+
+    describe("pausing the pomodoro", () => {
+      it("pauses the pomodoro", () => {
+        const prevState = {
+          currentPomodoro: {
+            pauses: []
+          }
+        };
+
+        const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
+
+        const action = {
+          type: ActionTypes.PAUSE_POMODORO,
+          payload: {
+            dateTime: pauseStartDate
+          }
+        };
+
+        const nextState = pomodorosReducer(prevState, action);
+
+        expect(nextState.currentPomodoro.pauses).to.include(
+          {
+            startedAt: pauseStartDate,
+          }
+        );
+      });
+
+      it("does not pause the pomodoro if it is already paused", () => {
+        const prevState = {
+          currentPomodoro: {
+            pauses: [{
+              startedAt: "a date",
+            }]
+          }
+        };
+
+        const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
+
+        const action = {
+          type: ActionTypes.PAUSE_POMODORO,
+          payload: {
+            dateTime: pauseStartDate
+          }
+        };
+
+        const nextState = pomodorosReducer(prevState, action);
+
+        expect(nextState).to.equal(prevState);
+      });
+    });
+
+    describe("finishing the pomodoro", () => {
+      it("moves the current pomodoro to past pomodoros", () => {
+        const prevState = {
+          currentPomodoro: "my pomodoro",
+          pastPomodoros: ["past pomodoro"]
+        };
+
+        const action = {
+          type: ActionTypes.FINISH_POMODORO,
+          payload: {},
+        };
+
+        const nextState = pomodorosReducer(prevState, action);
+
+        expect(nextState.pastPomodoros).to.include("my pomodoro");
+      });
+
+      it("resets the current pomodoro to default", () => {
+        const prevState = {
+          currentPomodoro: { startedAt: "existing started at value", pauses: ["existing pause"] },
+          pastPomodoros: []
+        };
+
+        const action = {
+          type: ActionTypes.FINISH_POMODORO,
+          payload: {},
+        };
+
+        const nextState = pomodorosReducer(prevState, action);
+
+        expect(nextState.currentPomodoro.startedAt).to.equal(null);
+        expect(nextState.currentPomodoro.pauses).to.be.empty;
+      });
+    });
+
   });
 })
 ;

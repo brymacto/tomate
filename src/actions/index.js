@@ -30,7 +30,10 @@ const actionCreators = {
     payload: {
       dateTime
     }
-  })
+  }),
+  finishPomodoro: () => ({
+    type: ActionTypes.FINISH_POMODORO,
+  }),
 };
 
 export default actionCreators;

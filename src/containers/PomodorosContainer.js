@@ -13,6 +13,7 @@ class PomodorosContainer extends Component {
     startPomodoro: PropTypes.func.isRequired,
     pausePomodoro: PropTypes.func.isRequired,
     restartPomodoro: PropTypes.func.isRequired,
+    finishPomodoro: PropTypes.func.isRequired,
   };
 
   render() {
@@ -23,6 +24,7 @@ class PomodorosContainer extends Component {
       startPomodoro,
       pausePomodoro,
       restartPomodoro,
+      finishPomodoro,
       pastPomodoros
     } = this.props;
 
@@ -36,6 +38,7 @@ class PomodorosContainer extends Component {
           onStart={startPomodoro}
           onPause={pausePomodoro}
           onRestart={restartPomodoro}
+          onFinish={finishPomodoro}
         />
       </div>
     );

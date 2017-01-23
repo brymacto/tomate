@@ -18,6 +18,7 @@ class OrderQuantityField extends Component {
     onStart: PropTypes.func.isRequired,
     onPause: PropTypes.func.isRequired,
     onRestart: PropTypes.func.isRequired,
+    onFinish: PropTypes.func.isRequired,
   };
 
   render() {
@@ -28,6 +29,7 @@ class OrderQuantityField extends Component {
       onStart,
       onPause,
       onRestart,
+      onFinish,
     } = this.props;
 
     function changeGoal(event) {
@@ -90,6 +92,7 @@ class OrderQuantityField extends Component {
         <button onClick={start} disabled={currentPomodoro.startedAt}>Start</button>
         <button onClick={pause} disabled={!currentPomodoro.startedAt || currentPomodoro.currentlyPaused}>Pause</button>
         <button onClick={restart} disabled={!currentPomodoro.startedAt || !currentPomodoro.currentlyPaused}>Restart</button>
+        <button onClick={onFinish} disabled={!currentPomodoro.startedAt}>Finish</button>
       </div>
     );
   }
