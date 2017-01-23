@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import actions from "../actions";
 import CurrentPomodoro from "../components/CurrentPomodoro";
-import withSecondsPaused from "../projectors/withSecondsPaused";
+import withPauseDetails from "../projectors/withPauseDetails";
 
 class PomodorosContainer extends Component {
   static propTypes = {
@@ -44,7 +44,7 @@ class PomodorosContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentPomodoro: withSecondsPaused(state.currentPomodoro, new Date()),
+    currentPomodoro: withPauseDetails(state.currentPomodoro, new Date()),
     pastPomodoros: state.pastPomodoros,
   };
 }
