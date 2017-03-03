@@ -1,35 +1,35 @@
 import { ActionTypes } from "../constants";
 
 const actionCreators = {
-  changeCurrentGoal: (goal) => ({
+  changeCurrentGoal: goal => ({
     type: ActionTypes.CHANGE_CURRENT_GOAL,
     payload: {
-      goal
-    }
+      goal,
+    },
   }),
-  changeCurrentResult: (result) => ({
+  changeCurrentResult: result => ({
     type: ActionTypes.CHANGE_CURRENT_RESULT,
     payload: {
-      result
-    }
+      result,
+    },
   }),
-  startPomodoro: (dateTime) => ({
+  startPomodoro: dateTime => ({
     type: ActionTypes.START_POMODORO,
     payload: {
-      dateTime
-    }
+      dateTime,
+    },
   }),
-  pausePomodoro: (dateTime) => ({
+  pausePomodoro: dateTime => ({
     type: ActionTypes.PAUSE_POMODORO,
     payload: {
-      dateTime
-    }
+      dateTime,
+    },
   }),
-  restartPomodoro: (dateTime) => ({
+  restartPomodoro: dateTime => ({
     type: ActionTypes.RESTART_POMODORO,
     payload: {
-      dateTime
-    }
+      dateTime,
+    },
   }),
   finishPomodoro: () => ({
     type: ActionTypes.FINISH_POMODORO,

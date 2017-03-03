@@ -7,14 +7,14 @@ describe("pomodoros reducer", () => {
     it("updates the pomodoro goal", () => {
       const prevState = {
         currentPomodoro: {
-          goal: "9"
-        }
+          goal: "9",
+        },
       };
       const action = {
         type: ActionTypes.CHANGE_CURRENT_GOAL,
         payload: {
-          goal: 8
-        }
+          goal: 8,
+        },
       };
 
       const nextState = pomodorosReducer(prevState, action);
@@ -25,14 +25,14 @@ describe("pomodoros reducer", () => {
     it("updates the pomodoro result", () => {
       const prevState = {
         currentPomodoro: {
-          result: ""
-        }
+          result: "",
+        },
       };
       const action = {
         type: ActionTypes.CHANGE_CURRENT_RESULT,
         payload: {
-          result: "my result"
-        }
+          result: "my result",
+        },
       };
 
       const nextState = pomodorosReducer(prevState, action);
@@ -43,8 +43,8 @@ describe("pomodoros reducer", () => {
     it("starts the pomodoro", () => {
       const prevState = {
         currentPomodoro: {
-          startedAt: new Date()
-        }
+          startedAt: new Date(),
+        },
       };
 
       const date = new Date("01 Jan 2017 12:15:10 EST");
@@ -52,8 +52,8 @@ describe("pomodoros reducer", () => {
       const action = {
         type: ActionTypes.START_POMODORO,
         payload: {
-          dateTime: date
-        }
+          dateTime: date,
+        },
       };
 
       const nextState = pomodorosReducer(prevState, action);
@@ -72,9 +72,9 @@ describe("pomodoros reducer", () => {
             },
             {
               startedAt: pauseStartDate,
-            }
-          ]
-        }
+            },
+          ],
+        },
       };
 
       const pauseEndDate = new Date("01 Jan 2017 12:02:00 EST");
@@ -82,8 +82,8 @@ describe("pomodoros reducer", () => {
       const action = {
         type: ActionTypes.RESTART_POMODORO,
         payload: {
-          dateTime: pauseEndDate
-        }
+          dateTime: pauseEndDate,
+        },
       };
 
       const nextState = pomodorosReducer(prevState, action);
@@ -100,8 +100,8 @@ describe("pomodoros reducer", () => {
       it("pauses the pomodoro", () => {
         const prevState = {
           currentPomodoro: {
-            pauses: []
-          }
+            pauses: [],
+          },
         };
 
         const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
@@ -109,8 +109,8 @@ describe("pomodoros reducer", () => {
         const action = {
           type: ActionTypes.PAUSE_POMODORO,
           payload: {
-            dateTime: pauseStartDate
-          }
+            dateTime: pauseStartDate,
+          },
         };
 
         const nextState = pomodorosReducer(prevState, action);
@@ -127,8 +127,8 @@ describe("pomodoros reducer", () => {
           currentPomodoro: {
             pauses: [{
               startedAt: "a date",
-            }]
-          }
+            }],
+          },
         };
 
         const pauseStartDate = new Date("01 Jan 2017 12:01:00 EST");
@@ -136,8 +136,8 @@ describe("pomodoros reducer", () => {
         const action = {
           type: ActionTypes.PAUSE_POMODORO,
           payload: {
-            dateTime: pauseStartDate
-          }
+            dateTime: pauseStartDate,
+          },
         };
 
         const nextState = pomodorosReducer(prevState, action);
@@ -150,7 +150,7 @@ describe("pomodoros reducer", () => {
       it("moves the current pomodoro to past pomodoros", () => {
         const prevState = {
           currentPomodoro: "my pomodoro",
-          pastPomodoros: ["past pomodoro"]
+          pastPomodoros: ["past pomodoro"],
         };
 
         const action = {
@@ -166,7 +166,7 @@ describe("pomodoros reducer", () => {
       it("resets the current pomodoro to default", () => {
         const prevState = {
           currentPomodoro: { startedAt: "existing started at value", pauses: ["existing pause"] },
-          pastPomodoros: []
+          pastPomodoros: [],
         };
 
         const action = {
@@ -177,10 +177,9 @@ describe("pomodoros reducer", () => {
         const nextState = pomodorosReducer(prevState, action);
 
         expect(nextState.currentPomodoro.startedAt).to.equal(null);
-        expect(nextState.currentPomodoro.pauses).to.be.empty;
+        expect(nextState.currentPomodoro.pauses).to.be.empty();
       });
     });
-
   });
 })
 ;

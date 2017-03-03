@@ -1,5 +1,9 @@
-import { expect } from "chai";
+import chai from "chai";
+import dirtyChai from "dirty-chai";
 import withPauseDetails from "../../src/projectors/withPauseDetails";
+
+const expect = chai.expect;
+chai.use(dirtyChai);
 
 describe("with pause details projector", () => {
   describe("current pause", () => {
@@ -18,7 +22,7 @@ describe("with pause details projector", () => {
 
       const result = withPauseDetails(pomodoro);
 
-      expect(result.currentlyPaused).to.be.true;
+      expect(result.currentlyPaused).to.be.true();
     });
 
     it("is false when no pauses", () => {
@@ -28,7 +32,7 @@ describe("with pause details projector", () => {
 
       const result = withPauseDetails(pomodoro);
 
-      expect(result.currentlyPaused).to.be.false;
+      expect(result.currentlyPaused).to.be.false();
     });
 
     it("is false when pauses have completed", () => {
@@ -43,7 +47,7 @@ describe("with pause details projector", () => {
 
       const result = withPauseDetails(pomodoro);
 
-      expect(result.currentlyPaused).to.be.false;
+      expect(result.currentlyPaused).to.be.false();
     });
   });
 

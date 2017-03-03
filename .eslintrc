@@ -2,7 +2,7 @@
   "parser": "babel-eslint",
   "extends": ["airbnb"],
   "rules": {
-    "comma-dangle": 0,
+    "comma-dangle": [2, "always-multiline"],
     "func-names": 0,
     "import/extensions": 2,
     "import/no-extraneous-dependencies": [
@@ -27,6 +27,7 @@
     "react/jsx-uses-react": 1,
     "react/prefer-stateless-function": 0,
     "react/require-extension": 0,
+    "react/forbid-prop-types": 0,
     "semi": [ 2, "always" ]
   },
   "env": {

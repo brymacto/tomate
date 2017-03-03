@@ -7,7 +7,7 @@ const initialPomodoro = {
   goal: "",
   result: "",
   startedAt: null,
-  pauses: []
+  pauses: [],
 };
 
 const initialState = {
@@ -33,7 +33,7 @@ export function pomodorosReducer(state = initialState, action) {
     case ActionTypes.FINISH_POMODORO:
       return update(state, {
         currentPomodoro: { $set: initialPomodoro },
-        pastPomodoros: { $push: [state.currentPomodoro] }
+        pastPomodoros: { $push: [state.currentPomodoro] },
       });
     default:
       return state;
@@ -51,6 +51,6 @@ export function pomodorosReducer(state = initialState, action) {
 }
 
 export default combineReducers({
-  pomodorosReducer
+  pomodorosReducer,
 });
 

@@ -25,7 +25,7 @@ class PomodorosContainer extends Component {
       pausePomodoro,
       restartPomodoro,
       finishPomodoro,
-      pastPomodoros
+      pastPomodoros,
     } = this.props;
 
     return (
@@ -43,7 +43,7 @@ class PomodorosContainer extends Component {
 
         {
           pastPomodoros.map(pastPomodoro =>
-          <p key={pastPomodoro.startedAt}>Past Pomodoro</p>
+            <p key={pastPomodoro.startedAt}>Past Pomodoro</p>
           )
         }
       </div>
