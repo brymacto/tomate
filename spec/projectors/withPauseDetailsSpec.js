@@ -12,7 +12,7 @@ describe("with pause details projector", () => {
           },
           {
             startedAt: new Date("01 Jan 2017 12:05:00 EST"),
-          }
+          },
         ],
       };
 
@@ -57,7 +57,7 @@ describe("with pause details projector", () => {
           },
           {
             startedAt: new Date("01 Jan 2017 12:05:00 EST"),
-          }
+          },
         ],
       };
 
@@ -76,5 +76,4 @@ describe("with pause details projector", () => {
       expect(result.secondsPaused).to.equal(0);
     });
   });
-
 });

@@ -5,8 +5,6 @@ import { createStore } from "redux";
 import { pomodorosReducer } from "./reducers";
 import PomodorosContainer from "./containers/PomodorosContainer";
 
-
-
 window.onload = init;
 
 function init() {

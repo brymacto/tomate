@@ -2,11 +2,14 @@
   "name": "tomate",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base src",
+    "watch": "webpack-dev-server --content-base src",
+    "start": "electron -r babel-register .",
     "test": "mocha-webpack --opts ./spec/mocha-webpack.opts",
-    "test:watch": "mocha-webpack --watch --opts ./spec/mocha-webpack.opts"
+    "test:watch": "mocha-webpack --watch --opts ./spec/mocha-webpack.opts",
+    "lint": "eslint --config ./.eslintrc './**/*.js'",
+    "lint-fix": "eslint --config ./.eslintrc './**/*.js' --fix"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +21,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
+    "electron": "1.6.1",
     "eslint": "^3.8.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^1.16.0",
