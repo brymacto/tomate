@@ -43,7 +43,10 @@ class PomodorosContainer extends Component {
 
         {
           pastPomodoros.map(pastPomodoro =>
-            <p key={pastPomodoro.startedAt}>Past Pomodoro</p>
+            <p key={pastPomodoro.startedAt}>
+              Goal: { pastPomodoro.goal }<br />
+              Result: { pastPomodoro.result }
+            </p>
           )
         }
       </div>

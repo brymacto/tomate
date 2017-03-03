@@ -31,8 +31,11 @@ const actionCreators = {
       dateTime,
     },
   }),
-  finishPomodoro: () => ({
+  finishPomodoro: dateTime => ({
     type: ActionTypes.FINISH_POMODORO,
+    payload: {
+      dateTime,
+    },
   }),
 };
 

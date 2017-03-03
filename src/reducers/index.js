@@ -33,7 +33,7 @@ export function pomodorosReducer(state = initialState, action) {
     case ActionTypes.FINISH_POMODORO:
       return update(state, {
         currentPomodoro: { $set: initialPomodoro },
-        pastPomodoros: { $push: [state.currentPomodoro] },
+        pastPomodoros: { $push: [Object.assign(state.currentPomodoro, { endTime: action.payload.dateTime })] },
       });
     default:
       return state;

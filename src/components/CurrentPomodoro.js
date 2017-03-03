@@ -55,6 +55,11 @@ class OrderQuantityField extends Component {
       onRestart(dateTime);
     }
 
+    function finish() {
+      const dateTime = new Date();
+      onFinish(dateTime);
+    }
+
     function startedAt() {
       if (!currentPomodoro.startedAt) {
         return "";
@@ -92,7 +97,7 @@ class OrderQuantityField extends Component {
         <button onClick={start} disabled={currentPomodoro.startedAt}>Start</button>
         <button onClick={pause} disabled={!currentPomodoro.startedAt || currentPomodoro.currentlyPaused}>Pause</button>
         <button onClick={restart} disabled={!currentPomodoro.startedAt || !currentPomodoro.currentlyPaused}>Restart</button>
-        <button onClick={onFinish} disabled={!currentPomodoro.startedAt}>Finish</button>
+        <button onClick={finish} disabled={!currentPomodoro.startedAt}>Finish</button>
       </div>
     );
   }

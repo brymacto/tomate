@@ -149,18 +149,18 @@ describe("pomodoros reducer", () => {
     describe("finishing the pomodoro", () => {
       it("moves the current pomodoro to past pomodoros", () => {
         const prevState = {
-          currentPomodoro: "my pomodoro",
+          currentPomodoro: { "a": "b"},
           pastPomodoros: ["past pomodoro"],
         };
 
         const action = {
           type: ActionTypes.FINISH_POMODORO,
-          payload: {},
+          payload: { dateTime: "my date" },
         };
 
         const nextState = pomodorosReducer(prevState, action);
 
-        expect(nextState.pastPomodoros).to.include("my pomodoro");
+        expect(nextState.pastPomodoros).to.include({ a: "b", endTime: "my date" });
       });
 
       it("resets the current pomodoro to default", () => {
