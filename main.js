@@ -1,6 +1,9 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
+import electronDebug from "electron-debug";
 import url from "url";
+
+electronDebug({ showDevTools: true });
 
 let mainWindow = null;
 
