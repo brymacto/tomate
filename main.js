@@ -28,11 +28,12 @@ app.on("ready", () => {
   });
 
   EXTENSIONS.forEach(addExtension);
-
 });
 
 function addExtension(extension) {
+  /*eslint-disable */
   installExtension(extension)
     .then(name => console.log(`Added Extension:  ${name}`))
     .catch(err => console.log("An error occurred: ", err));
+  /*eslint-enable */
 }
