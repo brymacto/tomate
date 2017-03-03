@@ -147,7 +147,7 @@ describe("pomodoros reducer", () => {
     });
 
     describe("finishing the pomodoro", () => {
-      it("moves the current pomodoro to past pomodoros", () => {
+      it("moves the current pomodoro to past pomodoros and records end time and length", () => {
         const prevState = {
           currentPomodoro: { startedAt: 0 },
           pastPomodoros: ["past pomodoro"],
