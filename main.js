@@ -3,7 +3,6 @@ import path from "path";
 import electronDebug from "electron-debug";
 import url from "url";
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from "electron-devtools-installer";
-import tomateDb from "./src/db/tomate-db";
 
 const EXTENSIONS = [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS];
 
@@ -29,8 +28,6 @@ app.on("ready", () => {
   });
 
   EXTENSIONS.forEach(addExtension);
-
-  tomateDb.createDbIfEmpty();
 });
 
 function addExtension(extension) {

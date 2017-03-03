@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   entry: path.join(__dirname, "/src/", "app.js"),
+  target: "electron",
   output: {
     path: path.join(__dirname, "/bundled/"),
     publicPath: "http://localhost:8080/assets/",
