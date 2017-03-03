@@ -2,14 +2,10 @@ import { app, BrowserWindow } from "electron";
 import path from "path";
 import electronDebug from "electron-debug";
 import url from "url";
-import low from "lowdb";
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from "electron-devtools-installer";
+import tomateDb from "./src/db/tomate-db";
 
 const EXTENSIONS = [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS];
-const db = low(path.join(app.getPath("appData"), "/tomate/tomate_db.json"));
-
-db.defaults({ pastPomodoros: [] })
-  .write();
 
 electronDebug({ showDevTools: true });
 
@@ -33,6 +29,8 @@ app.on("ready", () => {
   });
 
   EXTENSIONS.forEach(addExtension);
+
+  tomateDb.createDbIfEmpty();
 });
 
 function addExtension(extension) {
