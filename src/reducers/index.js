@@ -33,10 +33,18 @@ export function pomodorosReducer(state = initialState, action) {
     case ActionTypes.FINISH_POMODORO:
       return update(state, {
         currentPomodoro: { $set: initialPomodoro },
-        pastPomodoros: { $push: [Object.assign(state.currentPomodoro, { endTime: action.payload.dateTime })] },
+        pastPomodoros: { $push: [endedPomodoro(state.currentPomodoro, action.payload.dateTime)] },
       });
     default:
       return state;
+  }
+
+  function endedPomodoro(pomodoro, dateTime) {
+    return Object.assign(pomodoro, { endTime: dateTime, lengthInMinutes: calculateLength(pomodoro, dateTime) });
+  }
+
+  function calculateLength(pomodoro, endTime) {
+    return Math.round((endTime - pomodoro.startedAt) / 60000);
   }
 
   function endCurrentPause(pauses) {
