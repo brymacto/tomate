@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import actions from "../actions";
 import CurrentPomodoro from "../components/CurrentPomodoro";
 import withPauseDetails from "../projectors/withPauseDetails";
-import tomateDb from "../db/tomate-db";
 
 class PomodorosContainer extends Component {
   static propTypes = {
@@ -16,13 +15,6 @@ class PomodorosContainer extends Component {
     restartPomodoro: PropTypes.func.isRequired,
     finishPomodoro: PropTypes.func.isRequired,
   };
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.pastPomodoros.length > this.props.pastPomodoros.length) {
-      const lastPomodoro = nextProps.pastPomodoros[nextProps.pastPomodoros.length - 1];
-      tomateDb.addPastPomodoro(lastPomodoro);
-    }
-  }
 
   render() {
     const {

@@ -31,12 +31,21 @@ const actionCreators = {
       dateTime,
     },
   }),
-  finishPomodoro: dateTime => ({
-    type: ActionTypes.FINISH_POMODORO,
-    payload: {
-      dateTime,
-    },
-  }),
+  finishPomodoro: dateTime => dispatch => (
+    new Promise((resolve) => {
+      dispatch({
+        type: ActionTypes.FINISH_POMODORO,
+        payload: {
+          dateTime,
+        },
+      });
+      resolve();
+    }).then(
+      () => dispatch({
+        type: ActionTypes.SAVE_FINISHED_POMODORO,
+      })
+    )
+  ),
 };
 
 export default actionCreators;
