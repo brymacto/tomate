@@ -7,6 +7,25 @@ const SaveToDb = store => next => (action) => {
     const lastPomodoro = pastPomodoros[pastPomodoros.length - 1];
     tomateDb.addPastPomodoro(lastPomodoro);
   }
+
+  if (action.type === ActionTypes.APP_LOADED) {
+    let pastPomodoros = [];
+
+    new Promise(
+      (resolve) => {
+        pastPomodoros = tomateDb.getPastPomodoros();
+        resolve(pastPomodoros);
+      }
+    ).then(
+      pomodoros => store.dispatch(
+        {
+          type: ActionTypes.LOAD_PAST_POMODOROS,
+          payload: pomodoros,
+        }
+      )
+    );
+  }
+
   const result = next(action);
   return result;
 };

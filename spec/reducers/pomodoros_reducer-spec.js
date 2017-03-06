@@ -3,6 +3,23 @@ import { ActionTypes } from "../../src/constants";
 import { pomodorosReducer } from "../../src/reducers/";
 
 describe("pomodoros reducer", () => {
+  describe("loading pomodoros", () => {
+    it("loads pomodoros from the db", () => {
+      const prevState = {
+        pastPomodoros: [],
+      };
+      const action = {
+        type: ActionTypes.LOAD_PAST_POMODOROS,
+        payload: {
+          pastPomodoros: ["foo", "bar"],
+        },
+      };
+
+      const nextState = pomodorosReducer(prevState, action);
+
+      expect(nextState.pastPomodoros).to.deep.equal(["foo", "bar"]);
+    });
+  });
   describe("managing the current pomodoro", () => {
     it("updates the pomodoro goal", () => {
       const prevState = {

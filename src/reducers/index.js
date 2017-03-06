@@ -28,6 +28,8 @@ export function pomodorosReducer(state = initialState, action) {
         return update(state, { currentPomodoro: { pauses: { $push: [{ startedAt: action.payload.dateTime }] } } });
       }
       return state;
+    case ActionTypes.LOAD_PAST_POMODOROS:
+      return update(state, { pastPomodoros: { $set: action.payload.pastPomodoros } });
     case ActionTypes.RESTART_POMODORO:
       return update(state, { currentPomodoro: { pauses: { $apply: endCurrentPause } } });
     case ActionTypes.FINISH_POMODORO:

@@ -13,7 +13,7 @@ export default {
 
   getPastPomodoros: () => {
     createDbIfEmpty();
-    db.getState("pastPomodoros");
+    return db.getState("pastPomodoros");
   },
 
   addPastPomodoro: (pastPomodoro) => {

@@ -46,6 +46,9 @@ const actionCreators = {
       })
     )
   ),
+  appLoaded: () => ({
+    type: ActionTypes.APP_LOADED,
+  }),
 };
 
 export default actionCreators;

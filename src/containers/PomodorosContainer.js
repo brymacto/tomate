@@ -14,7 +14,16 @@ class PomodorosContainer extends Component {
     pausePomodoro: PropTypes.func.isRequired,
     restartPomodoro: PropTypes.func.isRequired,
     finishPomodoro: PropTypes.func.isRequired,
+    appLoaded: PropTypes.func.isRequired,
   };
+
+  componentWillMount() {
+    const {
+      appLoaded,
+    } = this.props;
+
+    appLoaded();
+  }
 
   render() {
     const {
