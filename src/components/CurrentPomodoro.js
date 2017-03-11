@@ -29,8 +29,8 @@ class OrderQuantityField extends Component {
     };
   }
 
-  startTicking() {
-    this.setState({ tickInterval: setInterval(this.props.tick, 1000) });
+  startTicking(dateTime) {
+    this.setState({ tickInterval: setInterval(() => this.props.tick(dateTime), 1000) });
   }
 
   stopTicking() {
@@ -59,7 +59,7 @@ class OrderQuantityField extends Component {
     const start = () => {
       const dateTime = new Date();
       onStart(dateTime);
-      this.startTicking();
+      this.startTicking(dateTime);
     };
 
     const pause = () => {
@@ -71,7 +71,7 @@ class OrderQuantityField extends Component {
     const restart = () => {
       const dateTime = new Date();
       onRestart(dateTime);
-      this.startTicking();
+      this.startTicking(dateTime);
     };
 
     const finish = () => {

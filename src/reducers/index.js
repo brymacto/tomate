@@ -8,6 +8,7 @@ const initialPomodoro = {
   result: "",
   startedAt: null,
   pauses: [],
+  lastTickAt: null,
 };
 
 const initialState = {
@@ -37,6 +38,8 @@ export function pomodorosReducer(state = initialState, action) {
         currentPomodoro: { $set: initialPomodoro },
         pastPomodoros: { $push: [endedPomodoro(state.currentPomodoro, action.payload.dateTime)] },
       });
+    case ActionTypes.TICK:
+      return update(state, { currentPomodoro: { lastTickAt: { $set: action.payload.dateTime } } });
     default:
       return state;
   }
