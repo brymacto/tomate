@@ -19,7 +19,23 @@ class OrderQuantityField extends Component {
     onPause: PropTypes.func.isRequired,
     onRestart: PropTypes.func.isRequired,
     onFinish: PropTypes.func.isRequired,
+    tick: PropTypes.func.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      tickInterval: null,
+    };
+  }
+
+  startTicking() {
+    this.setState({ tickInterval: setInterval(this.props.tick, 1000) });
+  }
+
+  stopTicking() {
+    clearInterval(this.state.tickInterval);
+  }
 
   render() {
     const {
@@ -32,35 +48,39 @@ class OrderQuantityField extends Component {
       onFinish,
     } = this.props;
 
-    function changeGoal(event) {
+    const changeGoal = (event) => {
       onChangeGoal(event.target.value);
-    }
+    };
 
-    function changeResult(event) {
+    const changeResult = (event) => {
       onChangeResult(event.target.value);
-    }
+    };
 
-    function start() {
+    const start = () => {
       const dateTime = new Date();
       onStart(dateTime);
-    }
+      this.startTicking();
+    };
 
-    function pause() {
+    const pause = () => {
       const dateTime = new Date();
       onPause(dateTime);
-    }
+      this.stopTicking();
+    };
 
-    function restart() {
+    const restart = () => {
       const dateTime = new Date();
       onRestart(dateTime);
-    }
+      this.startTicking();
+    };
 
-    function finish() {
+    const finish = () => {
       const dateTime = new Date();
       onFinish(dateTime);
-    }
+      this.stopTicking();
+    };
 
-    function startedAt() {
+    const startedAt = () => {
       if (!currentPomodoro.startedAt) {
         return "";
       }
@@ -69,7 +89,7 @@ class OrderQuantityField extends Component {
         "en-US",
         { hour: "numeric", minute: "2-digit" }
       );
-    }
+    };
 
     return (
       <div>

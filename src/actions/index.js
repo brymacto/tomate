@@ -46,6 +46,12 @@ const actionCreators = {
       })
     )
   ),
+  tick: dateTime => ({
+    type: ActionTypes.TICK,
+    payload: {
+      dateTime,
+    },
+  }),
   appLoaded: () => ({
     type: ActionTypes.APP_LOADED,
   }),

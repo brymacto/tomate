@@ -15,6 +15,7 @@ class PomodorosContainer extends Component {
     restartPomodoro: PropTypes.func.isRequired,
     finishPomodoro: PropTypes.func.isRequired,
     appLoaded: PropTypes.func.isRequired,
+    tick: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
@@ -35,6 +36,7 @@ class PomodorosContainer extends Component {
       restartPomodoro,
       finishPomodoro,
       pastPomodoros,
+      tick,
     } = this.props;
 
     return (
@@ -48,6 +50,7 @@ class PomodorosContainer extends Component {
           onPause={pausePomodoro}
           onRestart={restartPomodoro}
           onFinish={finishPomodoro}
+          tick={tick}
         />
 
         {
